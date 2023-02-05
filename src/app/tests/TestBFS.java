@@ -11,11 +11,17 @@ public class TestBFS implements ITest {
     public static void run() {
         Graph graph = new Graph(new GraphAdjacencePrinter());
         Vertex v1 = graph.addVertex(new Vertex(6, "v1"));
-        Vertex v2 = graph.addVertex(new Vertex(4, "v2"));
+        Vertex v2 = graph.addVertex(new Vertex(4, "v2"));// -
         Vertex v3 = graph.addVertex(new Vertex(3, "v3"));
-        Vertex v4 = graph.addVertex(new Vertex(5, "v4"));
+        Vertex v4 = graph.addVertex(new Vertex(5, "v4"));// -
         Vertex v5 = graph.addVertex(new Vertex(1, "v5"));
         Vertex v6 = graph.addVertex(new Vertex(2, "v6"));
+
+
+        for (Vertex v: graph.getVertexs()) {
+            System.out.println("vertice: "+ v.getLabel());
+
+        }
 
         Edge a1 = new Edge(1);
         Edge a2 = new Edge(1);
@@ -34,6 +40,6 @@ public class TestBFS implements ITest {
         graph.addEdge(v6, v5, a6, false);
 
         Vertex v = BFS.getBestLocation(graph);
-        System.out.println(v.getLabel());
+        System.out.println("Melhor local: " +v.getLabel());
     }
 }

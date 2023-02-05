@@ -22,9 +22,11 @@ public class BFS {
             queue.add(vertex);
             visited[graph.getVertexs().indexOf(vertex)] = true;
             distance[graph.getVertexs().indexOf(vertex)] = 0;
-
+            System.out.println("-----------------------------------------------------------");
+            System.out.println("Vértice origem = "+vertex.getLabel());
             while (!queue.isEmpty()) {
                 Vertex currentVertex = queue.poll();
+                System.out.println("--> Vértice atual = " + currentVertex.getLabel());
                 for (Edge edge : graph.getIncidenceOfVertex(currentVertex)) {
 
                     Vertex adjacentVertex = graph.getOposite(currentVertex, edge);
@@ -33,10 +35,16 @@ public class BFS {
                     if (!visited[adjacentIndex]) {
                         distance[adjacentIndex] = distance[graph.getVertexs().indexOf(currentVertex)] + 1;
                         totalDistance += distance[adjacentIndex];
+                        System.out.println("Distancia para o "+adjacentVertex.getLabel()+" = " + distance[adjacentIndex]);
+                        System.out.println("Distancia total = " + totalDistance);
                         visited[adjacentIndex] = true;
                         queue.add(adjacentVertex);
                     }
                 }
+                for (boolean v: visited) {
+                    System.out.println(v);
+                }
+                System.out.println("");
             }
 
             avgDistance = (totalDistance/n);
