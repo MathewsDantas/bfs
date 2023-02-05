@@ -1,0 +1,7 @@
+*.class
+
+# replit
+.replit
+.replit.nix
+.upm
+./app
